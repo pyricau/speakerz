@@ -26,10 +26,12 @@ public class PrezListActivity extends Activity {
 		setContentView(R.layout.prez_list);
 
 		adapter = new PrezAdapter(this);
+
 		prezList = (ListView) findViewById(R.id.prez_list);
 
 		prezList.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				prezListItemClicked(adapter.getItem(position));
 			}

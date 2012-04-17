@@ -3,5 +3,6 @@
 
     <string name="app_name">Speakerz</string>
     <string name="speaker_photo_description">speaker photo</string>
+    <string name="timing_end_text">"<![CDATA[<b>Android <font color="#99CC00">RoxXx</font></b>]]>"</string>
 
 </resources>

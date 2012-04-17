@@ -70,9 +70,8 @@ public class PrezAdapter extends BaseAdapter {
 			ImageView prezPhoto = (ImageView) convertView.findViewById(R.id.prezPhoto);
 			viewHolder = new ViewHolder(prezTitle, prezPhoto);
 			convertView.setTag(viewHolder);
-		} else {
+		} else
 			viewHolder = (ViewHolder) convertView.getTag();
-		}
 
 		viewHolder.prezTitle.setText(prezTitles[position]);
 		Drawable photo = prezPhotoIds.getDrawable(position);
