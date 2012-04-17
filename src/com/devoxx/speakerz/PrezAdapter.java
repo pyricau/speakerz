@@ -42,7 +42,7 @@ public class PrezAdapter extends BaseAdapter {
 		Resources resources = context.getResources();
 		prezTitles = resources.getStringArray(array.prezTitles);
 		prezSpeakers = resources.getStringArray(array.prezSpeakers);
-		prezPhotoIds = context.getResources().obtainTypedArray(R.array.prezPhotoIds);
+		prezPhotoIds = resources.obtainTypedArray(R.array.prezPhotoIds);
 	}
 
 	@Override
