@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, QuestionsALaConActivity!</string>
+    <string name="app_name">Paugaa</string>
+    <string name="title_text_view">"<![CDATA[Pour la <b>journée de la femme</b>, un peu de rose dans un monde de <font color="#bd3cff"><b>Geek</b></font>]]>"</string>
+    <string name="speaker_photo_description">speaker photo</string>
+
+</resources>

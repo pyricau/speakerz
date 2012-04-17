@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="prezTitles">
+        <item>Simplifiez vos développements Android avec AndroidAnnotations !</item>
+        <item>Guide de survie en théorie des langages</item>
+        <item>Réaliser des tests de charges avec Gatling</item>
+        <item>Tester une application Web avec Selenium 2, Selenium Grid et TestNG</item>
+        <item>De Runnable et synchronized à parallel() et atomically()</item>
+        <item>Code Story</item>
+        <item>"Tribulation d'un développeur Java dans le Cloud"</item>
+        <item>BOF du Paris Scala User Group</item>
+        <item>JUG Leader</item>
+        <item>DevoxxJS</item>
+        <item>Bref, comment je suis devenu commiter Apache (presque) par accident</item>
+        <item>Seren, la serialisation sous steroides !</item>
+        <item>"Faire du code centré sur l'humain."</item>
+        <item>(R)évolutionnez vos bases de données avec Liquibase !</item>
+    </string-array>
+    
+    <string-array name="prezSpeakers">
+        <item>Pierre-Yves Ricau &amp; Alexandre Thomas</item>
+         <item>Alexandre Bertails</item>
+         <item>Stéphane Landelle &amp; Romain Sertelon</item>
+         <item>Mathilde Lemee</item>
+         <item>José Paumard</item>
+         <item>David Gageot &amp; Jean-laurent De morlhon &amp; Sebastian Le merdy &amp; Eric Le merdy</item>
+         <item>Tugdual Grall</item>
+         <item>Alexis Agahi</item>
+         <item>Antonio Goncalves</item>
+         <item>Thomas Bassetto</item>
+         <item>Antoine Sabot-durand</item>
+         <item>Olivier Croisier</item>
+         <item>Yannick Grenzinger</item>
+         <item>Florent Biville</item>
+    </string-array>
+
+    <array name="prezPhotoIds">
+        <item>@drawable/aa_photo</item>
+         <item>@drawable/guide_survie</item>
+         <item>@drawable/gatling</item>
+         <item>@drawable/fluent_lenium</item>
+         <item>@drawable/runnable</item>
+         <item>@drawable/codestory</item>
+         <item>@drawable/tribulations</item>
+         <item>@drawable/scala</item>
+         <item>@drawable/jug</item>
+         <item>@drawable/devoxxjs</item>
+         <item>@drawable/apache</item>
+         <item>@drawable/seren</item>
+         <item>@drawable/humain</item>
+         <item>@drawable/liquibase</item>
+    </array>
+
+</resources>

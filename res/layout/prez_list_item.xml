@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/prez_list"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/prezPhoto"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:contentDescription="@string/speaker_photo_description"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/prezTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:shadowColor="#44000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1.5"
+        android:textSize="18dp" />
+
+</LinearLayout>
