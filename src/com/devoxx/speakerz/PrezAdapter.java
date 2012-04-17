@@ -1,6 +1,7 @@
 package com.devoxx.speakerz;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -9,12 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.googlecode.androidannotations.annotations.AfterInject;
-import com.googlecode.androidannotations.annotations.EBean;
-import com.googlecode.androidannotations.annotations.RootContext;
-import com.googlecode.androidannotations.annotations.res.StringArrayRes;
+import com.devoxx.speakerz.R.array;
 
-@EBean
 public class PrezAdapter extends BaseAdapter {
 
 	private static class ViewHolder {
@@ -28,19 +25,23 @@ public class PrezAdapter extends BaseAdapter {
 		}
 	}
 
-	@RootContext
 	Context context;
 
-	@StringArrayRes
 	String[] prezTitles;
 
-	@StringArrayRes
 	String[] prezSpeakers;
 
 	TypedArray prezPhotoIds;
 
-	@AfterInject
-	void initPrezPhotoIds() {
+	public PrezAdapter(Context context) {
+		this.context = context;
+		initAdapter();
+	}
+
+	void initAdapter() {
+		Resources resources = context.getResources();
+		prezTitles = resources.getStringArray(array.prezTitles);
+		prezSpeakers = resources.getStringArray(array.prezSpeakers);
 		prezPhotoIds = context.getResources().obtainTypedArray(R.array.prezPhotoIds);
 	}
 
