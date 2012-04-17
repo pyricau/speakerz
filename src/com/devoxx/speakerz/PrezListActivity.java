@@ -31,7 +31,7 @@ public class PrezListActivity extends Activity {
 		prezList.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				prezListItemClicked(((Prez) parent.getAdapter().getItem(position)));
+				prezListItemClicked(adapter.getItem(position));
 			}
 
 		});
