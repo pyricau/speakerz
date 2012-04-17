@@ -41,10 +41,12 @@ public class SpeakerzDetailzActivity extends Activity {
 
 	CharSequence timingEndText;
 
+	// Ma longue méthode d'init
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		// Les strings, c'est extra
 		Intent intent = getIntent();
 		title = intent.getStringExtra("title");
 		speaker = intent.getStringExtra("speaker");
@@ -54,17 +56,22 @@ public class SpeakerzDetailzActivity extends Activity {
 		slideInToRight = AnimationUtils.loadAnimation(this, R.anim.slide_in_to_right);
 		slideOutToLeft = AnimationUtils.loadAnimation(this, R.anim.slide_out_to_left);
 
+		// Copy & paste from da web
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView(R.layout.speakerz_detailz);
 
+		// Tu pars du Nord Ouest pour aller au Sud Est, et tu cast !
 		titleTextView = (TextView) findViewById(R.id.titleTextView);
 		showButton = (TextView) findViewById(R.id.showButton);
 		timingButton = findViewById(R.id.timingButton);
 		timingCount = (TextView) findViewById(R.id.timingCount);
 		speakerPhoto = (ImageView) findViewById(R.id.speakerPhoto);
 
+		timingEndText = Html.fromHtml(getString(R.string.timing_end_text));
+
+		// You listening to me?
 		timingButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -91,8 +98,6 @@ public class SpeakerzDetailzActivity extends Activity {
 			}
 
 		});
-
-		timingEndText = Html.fromHtml(getString(R.string.timing_end_text));
 
 		init();
 	}
@@ -121,6 +126,7 @@ public class SpeakerzDetailzActivity extends Activity {
 
 	void doSomethingInBackground() {
 
+		// I CAN HAZ GENERIC PARAMZ?
 		AsyncTask<Void, Integer, Void> task = new AsyncTask<Void, Integer, Void>() {
 
 			@Override
