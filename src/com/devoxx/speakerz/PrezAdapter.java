@@ -11,7 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.devoxx.speakerz.R.array;
+import com.googlecode.androidannotations.annotations.AfterInject;
+import com.googlecode.androidannotations.annotations.EBean;
+import com.googlecode.androidannotations.annotations.RootContext;
+import com.googlecode.androidannotations.annotations.res.StringArrayRes;
 
+@EBean
 public class PrezAdapter extends BaseAdapter {
 
 	private static class ViewHolder {
@@ -25,19 +30,18 @@ public class PrezAdapter extends BaseAdapter {
 		}
 	}
 
+	@RootContext
 	Context context;
 
+	@StringArrayRes
 	String[] prezTitles;
 
+	@StringArrayRes
 	String[] prezSpeakers;
 
 	TypedArray prezPhotoIds;
 
-	public PrezAdapter(Context context) {
-		this.context = context;
-		initAdapter();
-	}
-
+	@AfterInject
 	void initAdapter() {
 		Resources resources = context.getResources();
 		prezTitles = resources.getStringArray(array.prezTitles);

@@ -9,5 +9,6 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/androidannotations-2.4-api.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

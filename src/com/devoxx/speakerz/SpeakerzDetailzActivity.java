@@ -1,108 +1,73 @@
 package com.devoxx.speakerz;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Background;
+import com.googlecode.androidannotations.annotations.Click;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.Extra;
+import com.googlecode.androidannotations.annotations.Fullscreen;
+import com.googlecode.androidannotations.annotations.NoTitle;
+import com.googlecode.androidannotations.annotations.UiThread;
+import com.googlecode.androidannotations.annotations.ViewById;
+import com.googlecode.androidannotations.annotations.res.AnimationRes;
+import com.googlecode.androidannotations.annotations.res.HtmlRes;
+
+@NoTitle
+@Fullscreen
+@EActivity(R.layout.speakerz_detailz)
 public class SpeakerzDetailzActivity extends Activity {
 
+	@Extra("title")
 	String title;
 
+	@Extra("speaker")
 	String speaker;
 
+	@Extra("photoId")
 	int photoId;
 
+	@AnimationRes
 	Animation slideOutToLeft;
 
+	@AnimationRes
 	Animation slideInToRight;
 
+	@AnimationRes
 	Animation slideOutToBottom;
 
+	@ViewById
 	TextView titleTextView;
 
+	@ViewById
 	TextView showButton;
 
+	@ViewById
 	View timingButton;
 
+	@ViewById
 	TextView timingCount;
 
+	@ViewById
 	ImageView speakerPhoto;
 
+	@HtmlRes
 	CharSequence timingEndText;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		Intent intent = getIntent();
-		title = intent.getStringExtra("title");
-		speaker = intent.getStringExtra("speaker");
-		photoId = intent.getIntExtra("photoId", -1);
-
-		slideOutToBottom = AnimationUtils.loadAnimation(this, R.anim.slide_out_to_bottom);
-		slideInToRight = AnimationUtils.loadAnimation(this, R.anim.slide_in_to_right);
-		slideOutToLeft = AnimationUtils.loadAnimation(this, R.anim.slide_out_to_left);
-
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-		setContentView(R.layout.speakerz_detailz);
-
-		titleTextView = (TextView) findViewById(R.id.titleTextView);
-		showButton = (TextView) findViewById(R.id.showButton);
-		timingButton = findViewById(R.id.timingButton);
-		timingCount = (TextView) findViewById(R.id.timingCount);
-		speakerPhoto = (ImageView) findViewById(R.id.speakerPhoto);
-
-		timingButton.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View view) {
-				timingButtonClicked();
-			}
-
-		});
-
-		showButton.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View view) {
-				showHidePhoto();
-			}
-
-		});
-
-		findViewById(R.id.showButton2).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View view) {
-				showHidePhoto();
-			}
-
-		});
-
-		timingEndText = Html.fromHtml(getString(R.string.timing_end_text));
-
-		init();
-	}
-
+	@Click
 	void timingButtonClicked() {
 		timingButton.startAnimation(slideOutToBottom);
 		timingButton.setVisibility(View.GONE);
 		doSomethingInBackground();
 	}
 
+	@Click({ R.id.showButton, R.id.showButton2 })
 	void showHidePhoto() {
 		if (showButton.getVisibility() == View.VISIBLE) {
 			showButton.startAnimation(slideOutToLeft);
@@ -113,49 +78,32 @@ public class SpeakerzDetailzActivity extends Activity {
 		}
 	}
 
+	@AfterViews
 	void init() {
 		titleTextView.setText(title);
 		showButton.setText(speaker);
 		speakerPhoto.setImageDrawable(getResources().getDrawable(photoId));
 	}
 
+	@Background
 	void doSomethingInBackground() {
-
-		AsyncTask<Void, Integer, Void> task = new AsyncTask<Void, Integer, Void>() {
-
-			@Override
-			protected Void doInBackground(Void... params) {
-				for (int i = 5; i > 0; i--) {
-					publishProgress(i);
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						Log.e("Speakerz", "Quelqu'un m'a volé mon slip !", e);
-					}
-				}
-				return null;
+		for (int i = 5; i > 0; i--) {
+			updateTime(i);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				Log.e("Speakerz", "Quelqu'un m'a volé mon slip !", e);
 			}
-
-			@Override
-			protected void onProgressUpdate(Integer... values) {
-				Integer durationInSeconds = values[0];
-				updateTime(durationInSeconds);
-			}
-
-			@Override
-			protected void onPostExecute(Void result) {
-				countDone();
-			}
-
-		};
-
-		task.execute();
+		}
+		countDone();
 	}
 
+	@UiThread
 	void updateTime(int durationInSeconds) {
 		timingCount.setText(durationInSeconds + " s");
 	}
 
+	@UiThread
 	void countDone() {
 		timingCount.setText(timingEndText);
 	}
