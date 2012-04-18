@@ -29,6 +29,8 @@ public class SpeakerzDetailzActivity extends Activity {
 
 	Animation slideOutToBottom;
 
+	CharSequence timingEndText;
+
 	TextView titleTextView;
 
 	TextView showButton;
@@ -37,14 +39,16 @@ public class SpeakerzDetailzActivity extends Activity {
 
 	TextView timingCount;
 
-	ImageView speakerPhoto;
-
-	CharSequence timingEndText;
+	ImageView speakerImageView;
 
 	// Ma longue méthode d'init
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		// Copy & paste from da web
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		// Les strings, c'est extra
 		Intent intent = getIntent();
@@ -56,9 +60,7 @@ public class SpeakerzDetailzActivity extends Activity {
 		slideInToRight = AnimationUtils.loadAnimation(this, R.anim.slide_in_to_right);
 		slideOutToLeft = AnimationUtils.loadAnimation(this, R.anim.slide_out_to_left);
 
-		// Copy & paste from da web
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		timingEndText = Html.fromHtml(getString(R.string.timing_end_text));
 
 		setContentView(R.layout.speakerz_detailz);
 
@@ -67,9 +69,7 @@ public class SpeakerzDetailzActivity extends Activity {
 		showButton = (TextView) findViewById(R.id.showButton);
 		timingButton = findViewById(R.id.timingButton);
 		timingCount = (TextView) findViewById(R.id.timingCount);
-		speakerPhoto = (ImageView) findViewById(R.id.speakerPhoto);
-
-		timingEndText = Html.fromHtml(getString(R.string.timing_end_text));
+		speakerImageView = (ImageView) findViewById(R.id.speakerPhoto);
 
 		// You listening to me?
 		timingButton.setOnClickListener(new OnClickListener() {
@@ -121,7 +121,7 @@ public class SpeakerzDetailzActivity extends Activity {
 	void init() {
 		titleTextView.setText(title);
 		showButton.setText(speaker);
-		speakerPhoto.setImageDrawable(getResources().getDrawable(photoId));
+		speakerImageView.setImageDrawable(getResources().getDrawable(photoId));
 	}
 
 	void doSomethingInBackground() {
