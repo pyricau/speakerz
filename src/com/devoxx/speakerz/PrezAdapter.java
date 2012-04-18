@@ -10,8 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.devoxx.speakerz.R.array;
-
 public class PrezAdapter extends BaseAdapter {
 
 	private static class ViewHolder {
@@ -40,8 +38,8 @@ public class PrezAdapter extends BaseAdapter {
 
 	void initAdapter() {
 		Resources resources = context.getResources();
-		prezTitles = resources.getStringArray(array.prezTitles);
-		prezSpeakers = resources.getStringArray(array.prezSpeakers);
+		prezTitles = resources.getStringArray(R.array.prezTitles);
+		prezSpeakers = resources.getStringArray(R.array.prezSpeakers);
 		prezPhotoIds = resources.obtainTypedArray(R.array.prezPhotoIds);
 	}
 
