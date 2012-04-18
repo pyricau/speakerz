@@ -41,16 +41,16 @@ public class PrezListActivity extends Activity {
 		fillList();
 	}
 
-	void fillList() {
-		prezList.setAdapter(adapter);
-	}
-
 	void prezListItemClicked(Prez prez) {
 		Intent intent = new Intent(this, SpeakerzDetailzActivity.class);
 		intent.putExtra("title", prez.title);
 		intent.putExtra("speaker", prez.speaker);
 		intent.putExtra("photoId", prez.photoId);
 		startActivity(intent);
+	}
+
+	void fillList() {
+		prezList.setAdapter(adapter);
 	}
 
 }
